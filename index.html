@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Clever Kiki</title>
+    <link rel="canonical" href="https://imagine.cleverkiki.comn" />
+
+    <!-- Search Engine Crawler Instructions -->
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="googlebot" content="noindex, nofollow" />
+    <meta name="googlebot-news" content="noindex, nofollow" />
+    <meta name="googlebot-image" content="noindex, nofollow" />
+    <meta name="googlebot-video" content="noindex, nofollow" />
+    <meta name="googlebot-mobile" content="noindex, nofollow" />
+
+    <!-- Geographical and Language Meta Tags -->
+    <meta name="language" content="en" />
+    <meta name="country" content="ZA" />
+    <meta name="geo.country" content="ZA" />
+    <meta name="geo.placename" content="Johannesburg" />
+    <meta name="geo.region" content="Gauteng" />
+    <meta name="geo.position" content="-26.2041;28.0473" />
+    <meta name="ICBM" content="-26.2041, 28.0473" />
+
+    <!-- Apple Touch and Icons -->
+    <link rel="apple-touch-icon" href="icons/icon.png" />
+    <link rel="apple-touch-startup-image" href="icons/icon.png" />
+    <link rel="shortcut icon" href="build.ico" />
+    <link rel="icon" href="build.ico" />
+    <link rel="icon" type="image/png" sizes="192x192" href="icons/icon.png" />
+
+    <!-- Favicons for various sizes -->
+    <link rel="icon" type="image/png" sizes="128x128" href="icons/icon.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="icons/icon.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="icons/icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/icon.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="icons/icon.png" />
+
+    <!-- Pinned Sites Meta Tags -->
+    <meta name="application-name" content="Clever Kiki" />
+    <meta name="msapplication-tooltip" content="Clever Kiki" />
+    <meta name="msapplication-starturl" content="index.html" />
+    <meta name="msapplication-window" content="width=1024;height=768" />
+    <meta name="msapplication-TileColor" content="#000000" />
+    <meta name="msapplication-TileImage" content="icons/icon.png" />
+    <meta name="msapplication-config" content="browserconfig.xml" />
+
+    <!-- Social Meta Tags (Open Graph & Twitter) -->
+    <meta property="og:url" content="https://imagine.cleverkiki.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Clever Kiki" />
+    <meta property="og:description" content="Kiki is a clever girl that wants to learn." />
+    <meta property="og:image" content="https://imagine.cleverkiki.com/icons/icon.png" />
+    <meta property="og:site_name" content="Clever Kiki" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@inventinred" />
+    <meta name="twitter:title" content="Clever Kiki" />
+    <meta name="twitter:description" content="Kiki is a clever girl that wants to learn." />
+    <meta name="twitter:image" content="https://imagine.cleverkiki.com/icons/icon.png" />
+
+    <!-- Mobile Settings -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <meta name="theme-color" content="#000000" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Clever Kiki" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+    <link rel="manifest" href="manifest.json" />
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #1c1c1c;
+        font-family: Arial, sans-serif;
+      }
+
+      nav {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1000000;
+        display: flex;
+        gap: 10px;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 8px;
+        border-radius: 8px;
+        backdrop-filter: blur(10px);
+      }
+
+      .nav-item {
+        padding: 8px 16px;
+        color: white;
+        cursor: pointer;
+        border-radius: 6px;
+        transition: background-color 0.3s;
+        user-select: none;
+      }
+
+      .nav-item:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      .nav-item.active {
+        background-color: #5b52e6;
+      }
+
+      .iframe-mobile, .iframe-desktop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+        display: none;
+      }
+
+      .active-frame {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-item" onclick="switchView('mobile')">Mobile</div>
+      <div class="nav-item" onclick="switchView('desktop')">Desktop</div>
+    </nav>
+    <!-- Mobile page iframe -->
+    <iframe title="mobile" class="iframe-mobile" src=""></iframe>
+    <!-- Desktop page iframe -->
+    <iframe title="desktop" class="iframe-desktop" src=""></iframe>
+
+    <script>
+      function switchView(view) {
+        const mobileFrame = document.querySelector('.iframe-mobile');
+        const desktopFrame = document.querySelector('.iframe-desktop');
+        const mobileBtn = document.querySelector('.nav-item:first-child');
+        const desktopBtn = document.querySelector('.nav-item:last-child');
+        
+        if (view === 'mobile') {
+          mobileFrame.src = 'target.html';
+          desktopFrame.src = '';
+          mobileFrame.classList.add('active-frame');
+          desktopFrame.classList.remove('active-frame');
+          mobileBtn.classList.add('active');
+          desktopBtn.classList.remove('active');
+        } else {
+          desktopFrame.src = 'dark.html';
+          mobileFrame.src = '';
+          desktopFrame.classList.add('active-frame');
+          mobileFrame.classList.remove('active-frame');
+          desktopBtn.classList.add('active');
+          mobileBtn.classList.remove('active');
+        }
+      }
+
+      // Handle viewport changes
+      function handleViewportChange() {
+        if (window.innerWidth <= 768) {
+          switchView('mobile');
+        } else {
+          switchView('desktop');
+        }
+      }
+
+      // Initialize and set up viewport change listener
+      window.onload = function() {
+        handleViewportChange(); // Initial check
+        window.addEventListener('resize', handleViewportChange); // Listen for viewport changes
+      }
+
+      // Hide navigation on mobile
+      function updateNavVisibility() {
+        const nav = document.querySelector('nav');
+        nav.style.display = window.innerWidth <= 768 ? 'none' : 'flex';
+      }
+
+      // Add resize listener for nav visibility
+      window.addEventListener('resize', updateNavVisibility);
+      window.addEventListener('load', updateNavVisibility);
+    </script>
+  </body>
+</html>
